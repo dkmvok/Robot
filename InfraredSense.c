@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include "msp432.h"
-#include "..\inc\Clock.h"
-#include "..\inc\InfraredSense.h"
+#include "../inc/Clock.h"
+#include "../inc/InfraredSense.h"
 
 
 void IRInit(void){ //0000_1000
