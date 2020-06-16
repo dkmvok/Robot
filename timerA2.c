@@ -5,7 +5,7 @@
 void (*TimerA2Task)();
 /*---------------------------------------
 ----------------------------------------*/
-void TimerA2Init() {	//IRQ=12, PRIORITY = 7-5 BITS
+void TimerA2Init(){	//IRQ=12, PRIORITY = 7-5 BITS
 	 TimerA2Task = task;
 	 TIMER_A2->CTL =  0X0280;
 	 TIMER_A2->CCTL[0] = 0x0010;
