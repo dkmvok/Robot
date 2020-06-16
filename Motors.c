@@ -2,6 +2,7 @@
 #include "msp.h"
 #include "../inc/CortexM.h"
 #include "../inc/PWM.h"
+#include "../inc/Motors.h"
 
 
 void MotorInit(){
