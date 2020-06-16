@@ -1,5 +1,5 @@
-#ifndef REFLECTANCE_H_
-#define REFLECTANCE_H_
+#ifndef INFRAREDSENSE_H_
+#define INFRAREDSENSE_H_
 
 void IRStart();
 uint8_t IRStop();
