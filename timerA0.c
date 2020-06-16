@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include "msp.h"
+#include "timerA0.h"
 
 void (*TimerA0Task)();
 /*---------------------------------------
