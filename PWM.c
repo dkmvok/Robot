@@ -1,11 +1,12 @@
 #include "msp.h"
+#include "PWM.h"
 
 
 void PWMInitA(uint16_t period, uint16_t duty){
 	uint16_t tempPeriod;
 	tempPeriod = period;
 	
-	if(duty >= period) return;    	
+	if(duty >= tempPeriod) return;    	
 	else {
 		P2->DIR |= 0x10;              
 		P2->SEL0 |= 0x10;             
@@ -21,8 +22,8 @@ void PWMInitA(uint16_t period, uint16_t duty){
 }
 
 void PWMInitAB(uint16_t period, uint16_t dutyA, uint16_t dutyB){
-  if(dutyA >= period) return; 
-  if(dutyB >= period) return; 
+  if((dutyA >= period) || (dutyB >= period)) return; 
+ else{
   P2->DIR |= 0x30;         
   P2->SEL0 |= 0x30;        
   P2->SEL1 &= ~0x30;        
@@ -33,7 +34,8 @@ void PWMInitAB(uint16_t period, uint16_t dutyA, uint16_t dutyB){
   TIMER_A0->CCR[1] = dutyA;        
   TIMER_A0->CCTL[2] = 0x0040;      
   TIMER_A0->CCR[2] = dutyB;       
-  TIMER_A0->CTL = 0x02F0;        
+  TIMER_A0->CTL = 0x02F0;   
+ }
 }
 
 void PWMDutyA(uint16_t dutyA){
