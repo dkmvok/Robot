@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include "msp432.h"
 #include "..\inc\Clock.h"
+#include "..\inc\InfraredSense.h"
 
 
 void IRInit(void){ //0000_1000
@@ -21,18 +22,15 @@ void IRInit(void){ //0000_1000
 
 
 uint8_t IRRead(uint32_t time){
-	uint8_t result,i;
+	uint8_t result;
 
 	P5->OUT |= 0x08;		
 	P7->DIR = 0xFF;
 	P7->OUT = 0xFF;
-	Clock_Delay1us(10);
-	
+	Clock_Delay1us(10);	
 	P7->DIR =0x00;		
 	Clock_Delay1us(10);
-
 	result = P7->IN & 0xFF;
-
 	P5->OUT &= ~0x08;		
 	Clock_Delay1ms(10);
 
