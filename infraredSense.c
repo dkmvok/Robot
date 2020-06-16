@@ -5,19 +5,17 @@
 
 void IRInit(void){ //0000_1000
     
-	P7->SEL0 &= ~0xFF; 		//regular gpio Sel0=0,Sel1 =0
+	P7->SEL0 &= ~0xFF; 		
 	P7->SEL1 &= ~0xFF;
-	//P7->DIR &= ~0xFF;		//make 7.0-7.7 an output
+	
 	P7->DIR =0x00;
-	//LED
-	P5->SEL0 &= ~0x08;  //Selectport 5.3
+	P5->SEL0 &= ~0x08; 
 	P5->SEL1 &= ~0x08;
-	P5->DIR |= 0x08; 	//Set output Direction
-	//LED
-	P9->SEL0 &= ~0x02;  //Selectport 9.2
+	P5->DIR |= 0x08; 	
+	
+	P9->SEL0 &= ~0x02;
 	P9->SEL1 &= ~0x02;
-	P9->DIR |= 0x02;		//Set to Output
-
+	P9->DIR |= 0x02;		
 
 }
 
@@ -25,20 +23,20 @@ void IRInit(void){ //0000_1000
 uint8_t IRRead(uint32_t time){
 	uint8_t result,i;
 
-	P5->OUT |= 0x08;		//Turn on LEDS
+	P5->OUT |= 0x08;		
 	P7->DIR = 0xFF;
 	P7->OUT = 0xFF;
 	Clock_Delay1us(10);
-	//P7->DIR &= ~0xFF;
-	P7->DIR =0x00;		//change sensor to input
+	
+	P7->DIR =0x00;		
 	Clock_Delay1us(10);
 
 	result = P7->IN & 0xFF;
 
-	P5->OUT &= ~0x08;		//Turn off LED
+	P5->OUT &= ~0x08;		
 	Clock_Delay1ms(10);
 
-    return result;
+   	return result;
 }
 
 
@@ -50,8 +48,8 @@ int32_t RobotPosition(uint8_t data){
 	if(data){
 		for(i=0;i<8;i=i+1) {
 
-			bit[i] = data % 2;	//remainder after division by 2
-			data = data/2;		//top part
+			bit[i] = data % 2;	
+			data = data/2;		
 		}
 
 		for(i=0;i<8;i=i+1) {
@@ -85,14 +83,6 @@ void IRStart(){
 	data = P7->IN & 0xFF;		//read all input pins
 
 }
-
-/*void setInput(){ 6.2
-	P7->SEL0 &= ~0xFF;			//Set to all GPIO
-	P7->SEL1 &= ~0xFF;
-	P7->DIR &= ~0xFF;			//Set to input
-
-}*/
-
 
 uint8_t IRStop(){
 	
