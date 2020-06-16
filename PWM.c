@@ -1,5 +1,5 @@
 #include "msp.h"
-#include "PWM.h"
+#include  "../inc/PWM.h"
 
 
 void PWMInitA(uint16_t period, uint16_t duty){
