@@ -8,7 +8,7 @@
 void MotorInit(){
 	P5->SEL0 &= ~0x30;		//0b11_0000 
 	P5->SEL1 &= ~0x30;
-	P5->DIR |= ~0x30;
+	P5->DIR |= 0x30;
 
 	P2->SEL0 &= ~0xC0;		//0b1100_0000 
 	P2->SEL1 &= ~0xC0;
