@@ -64,7 +64,7 @@ uint8_t collisionRead(){
 void PORT4_IRQHandler(void){
   
 	collisionTriggerVal |= P4->IFG;		//see what was enabled
-	P4->IFG = 0;
+	P4->IFG = 0x00;
 }
 
 void collisionHandler(uint8_t collisionSense){
@@ -73,5 +73,5 @@ void collisionHandler(uint8_t collisionSense){
 	hitWallFlag = 1;
 }
 void collisionClear(){
-	collisionTriggerValue = 0;
+	collisionTriggerValue = 0x00;
 }
