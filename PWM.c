@@ -3,6 +3,7 @@
 
 
 void PWMInitA(uint16_t period, uint16_t duty){
+	
 	uint16_t tempPeriod;
 	tempPeriod = period;
 	
@@ -22,6 +23,7 @@ void PWMInitA(uint16_t period, uint16_t duty){
 }
 
 void PWMInitAB(uint16_t period, uint16_t dutyA, uint16_t dutyB){
+	
   if((dutyA >= period) || (dutyB >= period)) return; 
   else{
  	P2->DIR |= 0x30;         
@@ -49,7 +51,7 @@ void PWMDutyA(uint16_t dutyA){
   
 }
 
-void PWMDutyB(uint16_t dutyB){
+void PWMDutyB(uint16_t dutyB){	
   uint16_t testB; 
   testB = TIMER_A0->CCR[0];
   
@@ -59,8 +61,7 @@ void PWMDutyB(uint16_t dutyB){
   }
 }
 
-void PWMInitCD(uint16_t period, uint16_t dutyC, uint16_t dutyD){
-  
+void PWMInitCD(uint16_t period, uint16_t dutyC, uint16_t dutyD){ 
   P2->SEL0 |= 0xC0;		//Set up PWM
   P2->SEL1 &= ~0xC0; 	
   P2->DIR |= 0XC0;
@@ -74,10 +75,12 @@ void PWMInitCD(uint16_t period, uint16_t dutyC, uint16_t dutyD){
 
   TIMER_A0->CCTL[4] = 0x0040;
   TIMER_A0->CCR[4] = dutyD;
-  TIMER_A0->CTL = 0x02F0;		
+  TIMER_A0->CTL = 0x02F0;
+	
 }
 
 void PWMDutyD(uint16_t dutyD){
+	
 	uint16_t testD;
     	testD = TIMER_A0->CCR[0];
 
@@ -87,6 +90,7 @@ void PWMDutyD(uint16_t dutyD){
 }
 
 void PWMDutyC(unint16_t dutyC){
+	
 	uint16_t testC;
     	testC = TIMER_A0->CCR[0];
 	
