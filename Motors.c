@@ -5,7 +5,7 @@
 #include "../inc/Motors.h"
 
 
-
+//
 void MotorInit(){
 	P5->SEL0 &= ~port5BitMask;		//0b11_0000 
 	P5->SEL1 &= ~port5BitMask;
