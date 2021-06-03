@@ -2,6 +2,7 @@
 #ifndef PWM_H_
 #define PWM_H_
 
+// Function declarations
 void PWMInitA(uint16_t period, uint16_t duty);
 void PWMInitAB(uint16_t period, uint16_t dutyA, uint16_t dutyB);
 void PWMDutyA(uint16_t dutyA);
